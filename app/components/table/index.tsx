@@ -3,9 +3,9 @@
 import './styles.css'
 import classnames from 'classnames'
 
-const seatClassnames = [
+const seatClassnames = classnames([
   'seat'
-]
+])
 
 export default function Table() {
   return (

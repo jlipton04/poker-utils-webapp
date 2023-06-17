@@ -1,0 +1,24 @@
+.actionBar {
+    margin-top: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5vw;
+}
+
+button {
+    width: 20vw;
+    height: 10vh;
+}
+
+button.call {
+    background-color: green;
+}
+
+button.raise {
+    background-color: orange;
+}
+
+button.fold {
+    background-color: red;
+}

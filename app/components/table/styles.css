@@ -1,0 +1,68 @@
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    min-width: 100%
+}
+
+/* Style for the circle */
+.table {
+    width: 60vw;
+    height: 40vh;
+    border-radius: 50%;
+    border: 2px solid teal;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: teal;
+    font-size: 4vw;
+    font-weight: bold;
+}
+
+.seat {
+    position: absolute;
+    left: calc(50% - 3vw);
+    top: calc(50% - 3vw);
+    height: 6vw;
+    width: 6vw;
+    border: 2px dotted #fff;
+    border-radius: 50%;
+}
+
+.hero {
+    border-color: aqua;
+}
+
+.seat:nth-child(1) {
+    transform: rotate(90deg) translateX(22vw);
+}
+
+.seat:nth-child(2) {
+    transform: rotate(145deg) translateX(28vw);
+}
+
+.seat:nth-child(3) {
+    transform: rotate(180deg) translateX(35vw);
+}
+
+.seat:nth-child(4) {
+    transform: rotate(215deg) translateX(28vw);
+}
+
+.seat:nth-child(5) {
+    transform: rotate(270deg) translateX(22vw);
+}
+
+.seat:nth-child(6) {
+    transform: rotate(325deg) translateX(28vw);
+}
+
+.seat:nth-child(7) {
+    transform: rotate(360deg) translateX(35vw);
+}
+
+.seat:nth-child(8) {
+    transform: rotate(35deg) translateX(28vw);
+}

@@ -35,34 +35,34 @@
     border-color: aqua;
 }
 
-.seat:nth-child(1) {
-    transform: rotate(90deg) translateX(22vw);
+.seat:nth-child(1) { /* Hero */
+    transform: translate(0, 22vw);
 }
 
 .seat:nth-child(2) {
-    transform: rotate(145deg) translateX(28vw);
+    transform: translate(-22.9vw, 16.1vw);
 }
 
-.seat:nth-child(3) {
-    transform: rotate(180deg) translateX(35vw);
+.seat:nth-child(3) { /* Left */
+    transform: translate(-35vw, 0);
 }
 
 .seat:nth-child(4) {
-    transform: rotate(215deg) translateX(28vw);
+    transform: translate(-22.9vw, -16.1vw);
 }
 
-.seat:nth-child(5) {
-    transform: rotate(270deg) translateX(22vw);
+.seat:nth-child(5) { /* Top */
+    transform: translate(0, -22vw);
 }
 
 .seat:nth-child(6) {
-    transform: rotate(325deg) translateX(28vw);
+    transform: translate(22.9vw, -16.1vw);
 }
 
-.seat:nth-child(7) {
-    transform: rotate(360deg) translateX(35vw);
+.seat:nth-child(7) { /* Right */
+    transform: translate(35vw, 0);
 }
 
 .seat:nth-child(8) {
-    transform: rotate(35deg) translateX(28vw);
+    transform: translate(22.9vw, 16.1vw);
 }

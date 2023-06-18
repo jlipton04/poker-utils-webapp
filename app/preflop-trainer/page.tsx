@@ -1,20 +1,29 @@
 'use client'
 
-import React, {useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import Table, { TableProps } from '../components/table'
 import ActionBar, { ActionBarProps } from '../components/actionBar'
 import OptionsBar from '../components/optionsBar'
-import { getHoleCards } from '../controller/preflopTableController'
+import { GetHoleCardsData } from '../../pages/api/getHoleCards'
 
 
 export default function PreflopTrainer() {
-    const [currHoleCards, currQuality] = getHoleCards()
+    const [currentHoleCards, setCurrentHoleCards] = useState('')
+    const [currentQuality, setCurrentQuality] = useState('')
+    const [currentPosition, setCurrentPosition] = useState('')
 
-    const [holeCards, setHoleCards] = useState(currHoleCards)
-    const [quality, setQuality] = useState(currQuality)
+    useEffect(() => {
+        getHoleCards().then((data: GetHoleCardsData) => {
+            const { holeCards, cardQuality, position } = data
+
+            setCurrentHoleCards(holeCards)
+            setCurrentQuality(cardQuality)
+            setCurrentPosition(position)
+        })
+    }, [])
 
     const tableProps: TableProps = {
-        heroCards: holeCards,
+        heroCards: currentHoleCards,
         villanCards: [
             true,
             true,
@@ -33,18 +42,28 @@ export default function PreflopTrainer() {
         onAction
     }
 
-    function onAction() {
-        const [newHoleCards, newQuality] = getHoleCards()
+    async function onAction() {
+        // console.log(isCorrect('RFI', 'UTG', currentQuality, 'RAISE', (correct: boolean) => {
+        //     console.log(correct)
+        // }))
 
-        setHoleCards(newHoleCards)
-        setQuality(newQuality)
+        // Reset for next hand
+        const { holeCards, cardQuality, position } = await getHoleCards()
+
+        setCurrentHoleCards(holeCards)
+        setCurrentQuality(cardQuality)
+        setCurrentPosition(position)
     }
 
     return (
         <div>
             <OptionsBar />
-            <Table {...tableProps}/>
+            <Table {...tableProps} />
             <ActionBar {...actionBarProps} />
         </div>
     )
+}
+
+async function getHoleCards(): Promise<GetHoleCardsData> {
+    return (await fetch('/api/getHoleCards')).json()
 }

@@ -12,7 +12,7 @@
     width: 60vw;
     height: 40vh;
     border-radius: 50%;
-    border: 2px solid teal;
+    border: 6px solid teal;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -25,12 +25,16 @@
     display: flex;
     justify-content: center;
     position: absolute;
-    left: calc(50% - 3vw);
-    top: calc(50% - 3vw);
-    height: 6vw;
-    width: 6vw;
+    left: calc(50% - 4vw);
+    top: calc(50% - 4vw);
+    height: 8vw;
+    width: 8vw;
     border: 2px dotted #fff;
     border-radius: 50%;
+}
+
+.card1 {
+    transform: translateX(-5vw) rotate(15deg);
 }
 
 .hero {
@@ -38,36 +42,33 @@
     height: 15vw;
     width: 15vw;
     transform: translate(-3vw, 10vw);
-}
-
-.card1 {
-    transform: translateX(-5vw) rotate(15deg);
+    z-index: 98;
 }
 
 .seat:nth-child(2) {
-    transform: translate(-22.9vw, 16.1vw);
+    transform: translate(-25vw, 13vw);
 }
 
 .seat:nth-child(3) { /* Left */
-    transform: translate(-35vw, 0);
+    transform: translate(-36vw, 0);
 }
 
 .seat:nth-child(4) {
-    transform: translate(-22.9vw, -16.1vw);
+    transform: translate(-25vw, -13vw);
 }
 
 .seat:nth-child(5) { /* Top */
-    transform: translate(0, -22vw);
+    transform: translate(0, -13vw);
 }
 
 .seat:nth-child(6) {
-    transform: translate(22.9vw, -16.1vw);
+    transform: translate(25vw, -13vw);
 }
 
 .seat:nth-child(7) { /* Right */
-    transform: translate(35vw, 0);
+    transform: translate(36vw, 0);
 }
 
 .seat:nth-child(8) {
-    transform: translate(22.9vw, 16.1vw);
+    transform: translate(25vw, 13vw);
 }

@@ -23,8 +23,8 @@ export default function Table(tableProps: TableProps) {
       <div className="table"></div>
       <div>
         <div className={`hero ${seatClassnames}`}>
-          {heroCards.map((card) => {
-            return <img src={`/cards/${card}.png`} key={card} alt={card} />
+          {heroCards.map((card, index) => {
+            return <img className={`card${index}`} src={`/cards/${card}.png`} key={card} alt={card} />
           })}
         </div>
         {tableProps.villanCards.map((isInHand) => {

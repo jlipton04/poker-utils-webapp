@@ -9,6 +9,7 @@
 button {
     width: 20vw;
     height: 10vh;
+    z-index: 99;
 }
 
 button.call {

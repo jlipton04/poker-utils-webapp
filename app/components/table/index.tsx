@@ -2,7 +2,6 @@
 
 import './styles.css'
 import classnames from 'classnames'
-import Image from 'next/image'
 
 export type TableProps = {
   heroCards: string,
@@ -25,13 +24,13 @@ export default function Table(tableProps: TableProps) {
       <div>
         <div className={`hero ${seatClassnames}`}>
           {heroCards.map((card) => {
-            return <Image src={`/cards/${card}.png`} key={card} alt={card} />
+            return <img src={`/cards/${card}.png`} key={card} alt={card} />
           })}
         </div>
         {tableProps.villanCards.map((isInHand) => {
           return isInHand && <div className={`${seatClassnames}`}>
-            <Image className="holeCards" src="/cards/card_back.png" alt="villan hole cards" />
-            <Image className="holeCards" src="/cards/card_back.png" alt="villan hole cards" />
+            <img className="holeCards" src="/cards/card_back.png" alt="villan hole cards" />
+            <img className="holeCards" src="/cards/card_back.png" alt="villan hole cards" />
           </div>
         })}
       </div>

@@ -22,6 +22,8 @@
 }
 
 .seat {
+    display: flex;
+    justify-content: center;
     position: absolute;
     left: calc(50% - 3vw);
     top: calc(50% - 3vw);
@@ -33,10 +35,9 @@
 
 .hero {
     border-color: aqua;
-}
-
-.seat:nth-child(1) { /* Hero */
-    transform: translate(0, 22vw);
+    height: 15vw;
+    width: 15vw;
+    transform: translate(-4.5vw, 10vw);
 }
 
 .seat:nth-child(2) {

@@ -8,7 +8,10 @@ import { getHoleCards } from '../controller/preflopTableController'
 
 
 export default function PreflopTrainer() {
-    const [holeCards, setHoleCards] = useState(getHoleCards)
+    const [currHoleCards, currQuality] = getHoleCards()
+
+    const [holeCards, setHoleCards] = useState(currHoleCards)
+    const [quality, setQuality] = useState(currQuality)
 
     const tableProps: TableProps = {
         heroCards: holeCards,
@@ -31,7 +34,10 @@ export default function PreflopTrainer() {
     }
 
     function onAction() {
-        setHoleCards(getHoleCards())
+        const [newHoleCards, newQuality] = getHoleCards()
+
+        setHoleCards(newHoleCards)
+        setQuality(newQuality)
     }
 
     return (

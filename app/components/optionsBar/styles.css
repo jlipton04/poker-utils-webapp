@@ -1,4 +1,23 @@
 .optionsBar {
     min-height: 20vh;
+    max-height: 20vh;
     background-color: rgb(0, 0, 36);
+}
+
+.position {
+    color: antiquewhite;
+    font-size: xx-large;
+}
+
+.position span {
+    font-weight: 800;
+}
+
+.mode {
+    color: antiquewhite;
+    font-size: xx-large;
+}
+
+.mode span {
+    font-weight: 800;
 }

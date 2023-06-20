@@ -62,10 +62,15 @@ export default function handler(
         quality = SUITED
     }
 
-    res.status(200).json({
+    if (cardOne.charAt(0) === cardTwo.charAt(0)) {
+        quality = ''
+    }
+
+    const responseData = {
         holeCards: cardOne + cardTwo,
         cardQuality: pips + quality,
         position: POSITIONS[Math.floor(Math.random() * POSITIONS.length)]
-    })
-        
+    }
+
+    res.status(200).json(responseData)
 }

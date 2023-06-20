@@ -26,12 +26,12 @@ const SUITS = [
 export const POSITIONS = [
     'UTG',
     'UTG+1',
+    'UTG+2',
     'LJ',
     'HJ',
     'CO',
     'BTN',
-    'SB',
-    'BB'
+    'SB'
 ]
 
 const SUITED = 's'

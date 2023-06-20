@@ -42,7 +42,7 @@ export default function PreflopTrainer() {
     }
 
     const actionBarProps: ActionBarProps = {
-        call: true,
+        call: currentPosition === 'SB',
         raise: true,
         fold: true,
         onAction

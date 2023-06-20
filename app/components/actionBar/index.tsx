@@ -7,9 +7,9 @@ export default function ActionBar(
 ) {
     return (
         <div className="actionBar">
-            {props.call && <button className="call" onClick={() => props.onAction()}>Call</button>}
-            {props.raise && <button className="raise" onClick={() => props.onAction()}>Raise</button>}
-            {props.fold && <button className="fold" onClick={() => props.onAction()}>Fold</button>}
+            {props.call && <button className="call" onClick={() => props.onAction('CALL')}>Call</button>}
+            {props.raise && <button className="raise" onClick={() => props.onAction('RAISE')}>Raise</button>}
+            {props.fold && <button className="fold" onClick={() => props.onAction('FOLD')}>Fold</button>}
         </div>
     )
 }
@@ -18,5 +18,5 @@ export type ActionBarProps = {
     call: boolean,
     raise: boolean,
     fold: boolean,
-    onAction: Function
+    onAction: (action: string) => void
 }

@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react'
 import Table, { TableProps } from '../components/table'
 import ActionBar, { ActionBarProps } from '../components/actionBar'
-import OptionsBar from '../components/optionsBar'
+import OptionsBar, { OptionsBarProps } from '../components/optionsBar'
 import { GetHoleCardsData } from '../../pages/api/getHoleCards'
 import { IsCorrectActionResponse, IsCorrectActionRequest } from '@/pages/api/isCorrectAction'
 
@@ -23,6 +23,11 @@ export default function PreflopTrainer() {
         })
     }, [])
 
+    const optionsBarProps: OptionsBarProps = {
+        position: currentPosition,
+        mode: 'RFI'
+    }
+
     const tableProps: TableProps = {
         heroCards: currentHoleCards,
         villanCards: [
@@ -37,21 +42,17 @@ export default function PreflopTrainer() {
     }
 
     const actionBarProps: ActionBarProps = {
-        call: false,
+        call: true,
         raise: true,
         fold: true,
         onAction
     }
 
-    async function onAction() {
-        // console.log(isCorrect('RFI', 'UTG', currentQuality, 'RAISE', (correct: boolean) => {
-        //     console.log(correct)
-        // }))
-
+    async function onAction(action: string) {
         isCorrectAction(
-            'RAISE',
+            action,
             currentQuality,
-            'UTG' || currentPosition,
+            currentPosition,
             'RFI'
         ).then((data: IsCorrectActionResponse) => {
             console.log(data.correct)
@@ -67,7 +68,7 @@ export default function PreflopTrainer() {
 
     return (
         <div>
-            <OptionsBar />
+            <OptionsBar {...optionsBarProps}/>
             <Table {...tableProps} />
             <ActionBar {...actionBarProps} />
         </div>

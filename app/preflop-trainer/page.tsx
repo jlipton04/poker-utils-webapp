@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
+import React, { use, useEffect, useState } from 'react'
 import Table, { TableProps } from '../components/table'
 import ActionBar, { ActionBarProps } from '../components/actionBar'
 import OptionsBar, { OptionsBarProps } from '../components/optionsBar'
@@ -12,6 +12,7 @@ export default function PreflopTrainer() {
     const [currentHoleCards, setCurrentHoleCards] = useState('')
     const [currentQuality, setCurrentQuality] = useState('')
     const [currentPosition, setCurrentPosition] = useState('')
+    const [currentResult, setCurrentResult] = useState('')
 
     useEffect(() => {
         getHoleCards().then((data: GetHoleCardsData) => {
@@ -38,7 +39,8 @@ export default function PreflopTrainer() {
             true,
             true,
             true
-        ]
+        ],
+        result: currentResult
     }
 
     const actionBarProps: ActionBarProps = {
@@ -55,7 +57,7 @@ export default function PreflopTrainer() {
             currentPosition,
             'RFI'
         ).then((data: IsCorrectActionResponse) => {
-            console.log(data.correct)
+            setCurrentResult(data.correct ? 'Correct!' : 'Wrong')
         })
 
         // Reset for next hand

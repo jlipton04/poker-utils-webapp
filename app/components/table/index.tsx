@@ -5,21 +5,23 @@ import classnames from 'classnames'
 
 export type TableProps = {
   heroCards: string,
-  villanCards: boolean[]
+  villanCards: boolean[],
+  result: string
 }
 
 const seatClassnames = classnames([
   'seat'
 ])
 
-export default function Table(tableProps: TableProps) {
+export default function Table(props: TableProps) {
   const heroCards = [
-    tableProps.heroCards.substring(0,2),
-    tableProps.heroCards.substring(2,4)
+    props.heroCards.substring(0,2),
+    props.heroCards.substring(2,4)
   ]
 
   return (
     <div className="container">
+      <div className="resultMessage">{props.result}</div>
       <div className="table"></div>
       <div>
         <div className={`hero ${seatClassnames}`}>
@@ -27,7 +29,7 @@ export default function Table(tableProps: TableProps) {
             return <img className={`card${index}`} src={`/cards/${card}.png`} key={card} alt={card} />
           })}
         </div>
-        {tableProps.villanCards.map((isInHand) => {
+        {props.villanCards.map((isInHand) => {
           return isInHand && <div className={`${seatClassnames}`}>
             <img className="holeCards" src="/cards/card_back.png" alt="villan hole cards" />
             <img className="holeCards" src="/cards/card_back.png" alt="villan hole cards" />

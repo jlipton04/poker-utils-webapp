@@ -7,6 +7,13 @@
     min-width: 100%;
 }
 
+.resultMessage {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 /* Style for the circle */
 .table {
     width: 60vw;

@@ -32,15 +32,16 @@ export default function PreflopTrainer() {
     const tableProps: TableProps = {
         heroCards: currentHoleCards,
         villanCards: [
-            true,
-            true,
-            true,
-            true,
-            true,
-            true,
-            true
+            '7d2c',
+            '7d2c',
+            '7d2c',
+            '7d2c',
+            '7d2c',
+            '7d2c',
+            '7d2c'
         ],
-        result: currentResult
+        result: currentResult,
+        openVillanCards: true
     }
 
     const actionBarProps: ActionBarProps = {

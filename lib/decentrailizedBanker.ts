@@ -20,7 +20,7 @@ const customComparator = (a: PlayerBalance, b: PlayerBalance) => b.balance - a.b
  * @returns Minimum list of transactions required to make all parties whole
  */
 export function getMinTransfers(balances: number[]): Transaction[] | null {
-    if (balances.reduce((sum, currBal) => sum + currBal) != 0) {
+    if (balances.reduce((sum, currBal) => sum + currBal) !== 0) {
         return null
     }
 

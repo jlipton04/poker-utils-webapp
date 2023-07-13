@@ -1,4 +1,6 @@
 import { Inter } from 'next/font/google'
+import '@app/custom-pico.scss'
+import Link from 'next/link'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -14,7 +16,21 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <div className='container-fluid'>
+          <nav>
+            <ul>
+              <li><strong>Jacob's Poker Utils Web App</strong></li>
+            </ul>
+            <ul>
+              <li>
+                <Link href='/home-game-calculator'>Home Game Calculator</Link>
+              </li>
+            </ul>
+          </nav>
+          {children}
+        </div>
+      </body>
     </html>
   )
 }

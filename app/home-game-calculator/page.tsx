@@ -1,5 +1,5 @@
 'use client'
-import { getMinTransfers } from '@/lib/decentrailizedBanker'
+import { getMinTransfers } from '@lib/decentrailizedBanker'
 import PlayerRow, { PlayerRowData } from './PlayerRow'
 import { Dispatch, SetStateAction, useEffect, useState } from "react"
 import TransactionsModal, { TransactionData } from './TransactionsModal'

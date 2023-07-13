@@ -24,55 +24,61 @@ export default function HomeGameCalculator() {
             onClose: () => setShowTransactions(false)
         }} />}
         <b>{balanceInformation(balanceSum)}</b>
-        <button
-            role='button'
-            onClick={_ =>
-                calculateTransactions(players, setShowTransactions, setTransactions)
-            }
-            disabled={!isBalanceSumValid(balanceSum)}
-        >Calculate Transactions</button>
-        <button
-            role='button'
-            className='contrast'
-            onClick={_ => setPlayers((oldPlayers) => fixBalances(oldPlayers, balanceSum))}
-            disabled={isBalanceSumValid(balanceSum) || isNaN(balanceSum)}
-        >Fix Balances</button>
-        <a
-            role='button'
-            href=''
-            onClick={e => {
-                e.preventDefault()
-                setPlayers((oldPlayers) => [...oldPlayers, {} as PlayerRowData])
-            }}
-        >Add Player</a>
-        {players.map((playerRowData, index) => (<PlayerRow
-            key={index}
-            {...playerRowData}
-            {...{
-                onRemove() {
-                    setPlayers((oldPlayers) => [
-                        ...oldPlayers.slice(0, index),
-                        ...oldPlayers.slice(index + 1)
-                    ])
-                },
-                handleInputChange(field, value, type) {
-                    const parsedValue = type === 'number' ? Number(value) : value
+        <article>
+            <header>
+                <button
+                    role='button'
+                    onClick={_ =>
+                        calculateTransactions(players, setShowTransactions, setTransactions)
+                    }
+                    disabled={!isBalanceSumValid(balanceSum)}
+                >Calculate Transactions</button>
+                <button
+                    role='button'
+                    className='contrast'
+                    onClick={_ => setPlayers((oldPlayers) => fixBalances(oldPlayers, balanceSum))}
+                    disabled={isBalanceSumValid(balanceSum) || isNaN(balanceSum)}
+                >Fix Balances</button>
+            </header>
+            {players.map((playerRowData, index) => (<PlayerRow
+                key={index}
+                {...playerRowData}
+                {...{
+                    onRemove() {
+                        setPlayers((oldPlayers) => [
+                            ...oldPlayers.slice(0, index),
+                            ...oldPlayers.slice(index + 1)
+                        ])
+                    },
+                    handleInputChange(field, value, type) {
+                        const parsedValue = type === 'number' ? Number(value) : value
 
-                    setPlayers((oldPlayers) => {
-                        return oldPlayers.map(((playerRowData, ind) => {
-                            if (ind !== index) {
+                        setPlayers((oldPlayers) => {
+                            return oldPlayers.map(((playerRowData, ind) => {
+                                if (ind !== index) {
+                                    return playerRowData
+                                }
+
+                                (playerRowData as any)[field] = parsedValue
+
                                 return playerRowData
-                            }
-
-                            (playerRowData as any)[field] = parsedValue
-
-                            return playerRowData
-                        }))
-                    })
-                },
-            }}
-        />))}
-    </div>)
+                            }))
+                        })
+                    },
+                }}
+            />))}
+            <footer>
+                <a
+                    role='button'
+                    href=''
+                    onClick={e => {
+                        e.preventDefault()
+                        setPlayers((oldPlayers) => [...oldPlayers, {} as PlayerRowData])
+                    }}
+                >Add Player</a>
+            </footer>
+        </article>
+    </div >)
 }
 
 function isBalanceSumValid(balanceSum: number): boolean {

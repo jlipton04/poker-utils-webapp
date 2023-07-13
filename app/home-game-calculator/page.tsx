@@ -11,11 +11,11 @@ export default function HomeGameCalculator() {
     const [balanceSum, setBalanceSum] = useState(0)
 
     useEffect(() => {
-        setBalanceSum(
-            players
-                .map(({ cashOut, buyIn }) => cashOut - buyIn)
-                .reduce((acc, balance) => acc + balance, 0)
-        )
+        const newBalanceSum = players
+            .map(({ cashOut, buyIn }) => cashOut - buyIn)
+            .reduce((acc, balance) => acc + balance, 0)
+
+        setBalanceSum(isNaN(newBalanceSum) ? 0 : newBalanceSum)
     }, [players])
 
     return (<div className="container-fluid">
@@ -38,7 +38,11 @@ export default function HomeGameCalculator() {
                     className='contrast'
                     onClick={_ => setPlayers((oldPlayers) => fixBalances(oldPlayers, balanceSum))}
                     disabled={isBalanceSumValid(balanceSum) || isNaN(balanceSum)}
-                >Fix Balances</button>
+                    data-tooltip='Distributes amount missing evenly among players'
+                    data-placement='bottom'
+                >
+                    Fix Balances {`($${((balanceSum / players.length) * -1).toFixed(2)} Per Player)`}
+                </button>
             </header>
             {players.map((playerRowData, index) => (<PlayerRow
                 key={index}

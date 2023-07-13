@@ -15,12 +15,12 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang='en'>
       <body className={inter.className}>
         <div className='container-fluid'>
           <nav>
             <ul>
-              <li><strong>Jacob's Poker Utils Web App</strong></li>
+              <li><strong>{`Jacob's Poker Utils Web App`}</strong></li>
             </ul>
             <ul>
               <li>

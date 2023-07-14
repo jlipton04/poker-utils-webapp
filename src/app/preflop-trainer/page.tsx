@@ -1,11 +1,11 @@
 'use client'
 
-import React, { use, useEffect, useState } from 'react'
-import Table, { TableProps } from '../components/table'
-import ActionBar, { ActionBarProps } from '../components/actionBar'
-import OptionsBar, { OptionsBarProps } from '../components/optionsBar'
-import { GetHoleCardsData } from '../../pages/api/getHoleCards'
-import { IsCorrectActionResponse, IsCorrectActionRequest } from '@/pages/api/isCorrectAction'
+import React, { useEffect, useState } from 'react'
+import Table, { TableProps } from '@app/components/table'
+import ActionBar, { ActionBarProps } from '@app/components/actionBar'
+import OptionsBar, { OptionsBarProps } from '@app/components/optionsBar'
+import { GetHoleCardsData } from '@pages/api/getHoleCards'
+import { IsCorrectActionResponse, IsCorrectActionRequest } from '@pages/api/isCorrectAction'
 
 
 export default function PreflopTrainer() {

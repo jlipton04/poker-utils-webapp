@@ -1,4 +1,4 @@
-import { getLoadedRanges } from '../../lib/rangeStore'
+import { getLoadedRanges } from '@lib/rangeStore'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 export type IsCorrectActionRequest = {

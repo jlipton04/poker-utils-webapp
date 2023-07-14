@@ -1,4 +1,4 @@
-import { Transaction, getMinTransfers } from "../lib/decentrailizedBanker"
+import { Transaction, getMinTransfers } from "@lib/decentrailizedBanker"
 
 describe('getMinTransfers tests', () => {
     it('should return an empty array if balances are already zero', () => {

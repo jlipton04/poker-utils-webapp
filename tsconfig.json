@@ -19,10 +19,12 @@
         "name": "next"
       }
     ],
+    "baseUrl": "src",
     "paths": {
       "@/*": ["./*"],
-      "@app/*": ["./app/*"],
-      "@lib/*": ["./lib/*"]
+      "@app/*": ["app/*"],
+      "@lib/*": ["lib/*"],
+      "@pages/*": ["pages/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "jest.config.js"],

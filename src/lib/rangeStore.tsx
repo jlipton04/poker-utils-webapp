@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 
-const RANGE_DIR = 'ranges'
+const RANGE_DIR = 'src/ranges'
 
 const MODES = [
     'RFI'

@@ -5,9 +5,7 @@ export type TransactionsModalProps = {
 
 export type TransactionData = {
   toName: string
-  toVenmo: string
   fromName: string
-  fromVenmo: string
   amount: number
 }
 
@@ -21,13 +19,11 @@ export default function TransactionsModal({
         <h3>Reccomended Transactions</h3>
         {transactions.map(({
           toName,
-          toVenmo,
           fromName,
-          fromVenmo,
           amount }, index) => (<>
             <label htmlFor="terms">
               <input type="checkbox" key={index} />
-              <em data-tooltip={fromName}>@{fromVenmo}</em> sends <b>${amount}</b> to <em data-tooltip={toName}>@{toVenmo}</em>
+              <b>{fromName}</b> sends <b>${amount}</b> to <b>{toName}</b >
             </label>
           </>))}
         <footer>

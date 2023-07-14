@@ -128,9 +128,7 @@ function calculateTransactions(
 
     setTransactions(calculatedTransactions.map(({ to, from, amount }) => ({
         toName: players[to].playerName,
-        toVenmo: players[to].venmo,
         fromName: players[from].playerName,
-        fromVenmo: players[from].venmo,
         amount
     } as TransactionData)))
 }

@@ -1,10 +1,11 @@
 import { ChangeEvent } from "react"
 
+const CURRENCY_PLACEHOLDER = '0.00'
+
 export type PlayerRowData = {
   playerName: string
   buyIn: number
   cashOut: number
-  venmo: string
 }
 
 export type PlayerRowProps = PlayerRowData & {
@@ -17,7 +18,6 @@ export default function PlayerRow(
     playerName,
     buyIn,
     cashOut,
-    venmo,
     onRemove,
     handleInputChange,
   }: PlayerRowProps) {
@@ -31,28 +31,25 @@ export default function PlayerRow(
       value: playerName
     },
     {
-      type: 'text',
-      name: 'venmo',
-      displayName: 'Venmo',
-      value: venmo
-    },
-    {
       type: 'number',
       name: 'buyIn',
       displayName: 'Buy In',
-      value: buyIn
+      value: buyIn,
+      placeholder: CURRENCY_PLACEHOLDER
     },
     {
       type: 'number',
       name: 'cashOut',
       displayName: 'Cash Out',
-      value: cashOut
+      value: cashOut,
+      placeholder: CURRENCY_PLACEHOLDER
     },
     {
       type: 'number',
       name: 'balance',
       displayName: 'Balance',
       value: (cashOut - buyIn).toFixed(2),
+      placeholder: CURRENCY_PLACEHOLDER
     }
   ]
 
@@ -71,6 +68,7 @@ type DisplayFieldProps = {
   name: string,
   displayName: string
   value: string | number,
+  placeholder?: string,
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void
 }
 
@@ -79,6 +77,7 @@ function DisplayField({
   name,
   displayName,
   value,
+  placeholder,
   onChange
 }: DisplayFieldProps) {
   return (
@@ -88,6 +87,7 @@ function DisplayField({
         type={type}
         value={value}
         id={name}
+        placeholder={placeholder}
         onChange={e => onChange!(e)}
       />
     </label>

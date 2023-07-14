@@ -1,6 +1,7 @@
 import { Inter } from 'next/font/google'
 import '@app/custom-pico.scss'
 import Link from 'next/link'
+import { Analytics } from '@vercel/analytics/react'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -30,7 +31,10 @@ export default function RootLayout({
               </ul>
             </nav>
           </header>
-          <main>{children}</main>
+          <main>
+            {children}
+            <Analytics />
+          </main>
           <footer>
             <small>
               Built by <a href='https://www.linkedin.com/in/jacob-lipton/' target='_blank'>Jacob Lipton</a>

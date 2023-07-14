@@ -1,9 +1,9 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import Table, { TableProps } from '@app/components/table'
-import ActionBar, { ActionBarProps } from '@app/components/actionBar'
-import OptionsBar, { OptionsBarProps } from '@app/components/optionsBar'
+import Table, { TableProps } from '@/app/preflop-trainer/table'
+import ActionBar, { ActionBarProps } from '@/app/preflop-trainer/actionBar'
+import OptionsBar, { OptionsBarProps } from '@/app/preflop-trainer/optionsBar'
 import { GetHoleCardsData } from '@pages/api/getHoleCards'
 import { IsCorrectActionResponse, IsCorrectActionRequest } from '@pages/api/isCorrectAction'
 

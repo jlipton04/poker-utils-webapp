@@ -1,6 +1,6 @@
 'use client'
 
-import { Card, getCardString } from '@lib/preflop-trainer/card'
+import { Card, getCardString } from '@lib/types/card'
 import './styles.scss'
 import classnames from 'classnames'
 

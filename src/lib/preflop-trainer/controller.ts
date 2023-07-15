@@ -1,4 +1,4 @@
-import { Card, PIPS, SUITS } from "./card"
+import { Card, PIPS, SUITS } from "@lib/types/card"
 
 const NUMBER_OF_HOLE_CARDS = 2
 

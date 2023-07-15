@@ -7,8 +7,9 @@ import OptionsBar, { OptionsBarProps } from '@/app/preflop-trainer/optionsBar'
 import { GetHoleCardsData } from '@pages/api/getHoleCards'
 import { IsCorrectActionResponse, IsCorrectActionRequest } from '@pages/api/isCorrectAction'
 import { getVillanCards } from '@lib/preflop-trainer/controller'
-import { Card } from '@lib/preflop-trainer/card'
+import { Card } from '@lib/types/card'
 
+const VILLAN_COUNT = 8
 
 export default function PreflopTrainer() {
     const [currentHoleCards, setCurrentHoleCards] = useState([] as Card[])
@@ -45,7 +46,7 @@ export default function PreflopTrainer() {
 
     const tableProps: TableProps = {
         heroCards: currentHoleCards,
-        villanCards: getVillanCards(8, currentHoleCards),
+        villanCards: getVillanCards(VILLAN_COUNT, currentHoleCards),
         result: currentResult,
         openVillanCards: false
     }

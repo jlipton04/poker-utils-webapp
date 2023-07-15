@@ -1,4 +1,4 @@
-import { Card } from "@lib/preflop-trainer/card"
+import { Card } from "@lib/types/card"
 import { getVillanCards } from "@lib/preflop-trainer/controller"
 
 function repeatedTest(description: string, numTimes: number, testFn: () => void) {

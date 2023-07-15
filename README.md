@@ -34,9 +34,14 @@ Example:
 *In the case above, the players only bought $300 in chips, but collectively they ended up with $312 in chips. Instead of one player losing $12, all players would have $4 removed from their cash-outs, effectively deflating their wins, but reflecting the true cash-value of the chips that ended up in play.*
 
 ## Development
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+### Core Frameworks and Libraries Used
+- [React](https://react.dev/) with [Next.js](https://nextjs.org/)
+- [Jest](https://jestjs.io/)
+- [Pico.css](https://picocss.com/)
+
+
+### Getting Started
 ```bash
 npm run dev # Runs app on http://localhost:3000
 npm run test # Runs Jest test suite

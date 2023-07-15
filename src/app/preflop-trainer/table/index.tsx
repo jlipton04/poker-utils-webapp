@@ -1,11 +1,12 @@
 'use client'
 
+import { Card, getCardString } from '@lib/preflop-trainer/card'
 import './styles.scss'
 import classnames from 'classnames'
 
 export type TableProps = {
-  heroCards: string,
-  villanCards: string[],
+  heroCards: Card[],
+  villanCards: Card[][],
   openVillanCards: boolean,
   result: string
 }
@@ -26,8 +27,8 @@ export default function Table({
       <div className="table"></div>
       <div className={`handed-${villanCards.length + 1}`}>
         {displayOpenedCards(heroCards, true)}
-        {villanCards.map((villanCard) => {
-          return villanCard && openVillanCards ? displayOpenedCards(villanCard) : displayVillanCards()
+        {villanCards.map((villanCards) => {
+          return villanCards && openVillanCards ? displayOpenedCards(villanCards) : displayVillanCards()
         })}
       </div>
     </div>
@@ -43,17 +44,15 @@ function displayVillanCards(): JSX.Element {
   )
 }
 
-function displayOpenedCards(cards: string, isHero: boolean | undefined = false): JSX.Element {
-  const cardList = [
-    cards.substring(0, 2),
-    cards.substring(2, 4)
-  ]
+function displayOpenedCards(cards: Card[], isHero: boolean | undefined = false): JSX.Element {
 
   return (
     <div className={`${isHero ? 'hero' : ''} ${seatClassnames}`}>
-      {cardList.map((card, index) => {
-        return isHero ? <img className={`card${index}`} src={`/cards/${card}.png`} key={card} alt={card} />
-          : <img className="holeCards" src={`/cards/${card}.png`} key={card} alt={card} />
+      {cards.map((card, index) => {
+        const cardName = getCardString(card)
+
+        return isHero ? <img className={`card${index}`} src={`/cards/${cardName}.png`} key={cardName} alt={cardName} />
+          : <img className="holeCards" src={`/cards/${cardName}.png`} key={cardName} alt={cardName} />
       })}
     </div>
   )

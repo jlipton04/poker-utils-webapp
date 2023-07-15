@@ -6,10 +6,12 @@ import ActionBar, { ActionBarProps } from '@/app/preflop-trainer/actionBar'
 import OptionsBar, { OptionsBarProps } from '@/app/preflop-trainer/optionsBar'
 import { GetHoleCardsData } from '@pages/api/getHoleCards'
 import { IsCorrectActionResponse, IsCorrectActionRequest } from '@pages/api/isCorrectAction'
+import { getVillanCards } from '@lib/preflop-trainer/controller'
+import { Card } from '@lib/preflop-trainer/card'
 
 
 export default function PreflopTrainer() {
-    const [currentHoleCards, setCurrentHoleCards] = useState('')
+    const [currentHoleCards, setCurrentHoleCards] = useState([] as Card[])
     const [currentQuality, setCurrentQuality] = useState('')
     const [currentPosition, setCurrentPosition] = useState('')
     const [currentResult, setCurrentResult] = useState('')
@@ -18,7 +20,19 @@ export default function PreflopTrainer() {
         getHoleCards().then((data: GetHoleCardsData) => {
             const { holeCards, cardQuality, position } = data
 
-            setCurrentHoleCards(holeCards)
+            // TODO: Once API is deprecated for client-side computation, remove this
+            const convertedHoleCards: Card[] = [
+                {
+                    pip: holeCards.substring(0, 1),
+                    suit: holeCards.substring(1, 2)
+                },
+                {
+                    pip: holeCards.substring(2, 3),
+                    suit: holeCards.substring(3, 4)
+                }
+            ]
+
+            setCurrentHoleCards(convertedHoleCards)
             setCurrentQuality(cardQuality)
             setCurrentPosition(position)
         })
@@ -31,18 +45,9 @@ export default function PreflopTrainer() {
 
     const tableProps: TableProps = {
         heroCards: currentHoleCards,
-        villanCards: [
-            '7d2c',
-            '7d2c',
-            '7d2c',
-            '7d2c',
-            '7d2c',
-            '7d2c',
-            '7d2c',
-            '7d2c'
-        ],
+        villanCards: getVillanCards(8, currentHoleCards),
         result: currentResult,
-        openVillanCards: true
+        openVillanCards: false
     }
 
     const actionBarProps: ActionBarProps = {
@@ -65,7 +70,19 @@ export default function PreflopTrainer() {
         // Reset for next hand
         const { holeCards, cardQuality, position } = await getHoleCards()
 
-        setCurrentHoleCards(holeCards)
+        // TODO: Once API is deprecated for client-side computation, remove this
+        const convertedHoleCards: Card[] = [
+            {
+                pip: holeCards.substring(0, 1),
+                suit: holeCards.substring(1, 2)
+            },
+            {
+                pip: holeCards.substring(2, 3),
+                suit: holeCards.substring(3, 4)
+            }
+        ]
+
+        setCurrentHoleCards(convertedHoleCards)
         setCurrentQuality(cardQuality)
         setCurrentPosition(position)
     }

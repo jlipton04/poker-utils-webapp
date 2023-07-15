@@ -1,7 +1,5 @@
 'use client'
 
-import './styles.css'
-
 export type OptionsBarProps = {
     position: string,
     mode: string

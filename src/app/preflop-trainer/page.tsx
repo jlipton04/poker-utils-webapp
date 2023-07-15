@@ -38,6 +38,7 @@ export default function PreflopTrainer() {
             '7d2c',
             '7d2c',
             '7d2c',
+            '7d2c',
             '7d2c'
         ],
         result: currentResult,
@@ -70,11 +71,11 @@ export default function PreflopTrainer() {
     }
 
     return (
-        <div>
-            <OptionsBar {...optionsBarProps}/>
+        <article>
+            <header><OptionsBar {...optionsBarProps} /></header>
             <Table {...tableProps} />
-            <ActionBar {...actionBarProps} />
-        </div>
+            <footer><ActionBar {...actionBarProps} /></footer>
+        </article>
     )
 }
 

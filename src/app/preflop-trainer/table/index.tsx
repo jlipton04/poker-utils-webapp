@@ -1,6 +1,6 @@
 'use client'
 
-import './styles.css'
+import './styles.scss'
 import classnames from 'classnames'
 
 export type TableProps = {
@@ -14,15 +14,20 @@ const seatClassnames = classnames([
   'seat'
 ])
 
-export default function Table(props: TableProps) {
+export default function Table({
+  heroCards,
+  villanCards,
+  openVillanCards,
+  result
+}: TableProps) {
   return (
-    <div className="container">
-      <div className="resultMessage">{props.result}</div>
+    <div className="container-fluid">
+      <div className="resultMessage">{result}</div>
       <div className="table"></div>
-      <div>
-        {displayOpenedCards(props.heroCards, true)}
-        {props.villanCards.map((villanCards) => {
-          return villanCards && props.openVillanCards ? displayOpenedCards(villanCards) : displayVillanCards()
+      <div className={`handed-${villanCards.length + 1}`}>
+        {displayOpenedCards(heroCards, true)}
+        {villanCards.map((villanCard) => {
+          return villanCard && openVillanCards ? displayOpenedCards(villanCard) : displayVillanCards()
         })}
       </div>
     </div>

@@ -3,10 +3,10 @@
 import { Card, getCardString } from '@lib/types/card'
 import './styles.scss'
 import classnames from 'classnames'
+import { Player } from '@lib/types/player'
 
 export type TableProps = {
-  heroCards: Card[],
-  villanCards: Card[][],
+  holeCards: Player[],
   openVillanCards: boolean,
   result: string
 }
@@ -16,8 +16,7 @@ const seatClassnames = classnames([
 ])
 
 export default function Table({
-  heroCards,
-  villanCards,
+  holeCards,
   openVillanCards,
   result
 }: TableProps) {
@@ -25,10 +24,10 @@ export default function Table({
     <div className="container-fluid">
       <div className="resultMessage">{result}</div>
       <div className="table"></div>
-      <div className={`handed-${villanCards.length + 1}`}>
-        {displayOpenedCards(heroCards, true)}
-        {villanCards.map((villanCards) => {
-          return villanCards && openVillanCards ? displayOpenedCards(villanCards) : displayVillanCards()
+      <div className={`handed-${holeCards.length}`}>
+        {displayOpenedCards(holeCards[0].holeCards, true)}
+        {holeCards.filter((_, index) => index !== 0).map(({ holeCards }) => {
+          return openVillanCards ? displayOpenedCards(holeCards) : displayVillanCards()
         })}
       </div>
     </div>

@@ -44,6 +44,9 @@ export type GetHoleCardsData = {
     position: string
 }
 
+/**
+ * @deprecated Using an API to get hole cards is too expensive
+ */
 export default function handler(
     req: NextApiRequest,
     res: NextApiResponse<GetHoleCardsData>

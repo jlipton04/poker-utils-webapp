@@ -26,7 +26,11 @@ export default function Table({
       <div className="table"></div>
       <div className={`handed-${holeCards.length}`}>
         {displayOpenedCards(holeCards[0].holeCards, true)}
-        {holeCards.filter((_, index) => index !== 0).map(({ holeCards }) => {
+        {holeCards.filter((_, index) => index !== 0).map(({ holeCards, inHand }) => {
+          if (!inHand) {
+            return
+          }
+
           return openVillanCards ? displayOpenedCards(holeCards) : displayVillanCards()
         })}
       </div>

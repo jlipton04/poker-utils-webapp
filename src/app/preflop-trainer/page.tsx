@@ -5,25 +5,27 @@ import Table, { TableProps } from '@/app/preflop-trainer/table'
 import ActionBar, { ActionBarProps } from '@/app/preflop-trainer/actionBar'
 import OptionsBar, { OptionsBarProps } from '@/app/preflop-trainer/optionsBar'
 import { IsCorrectActionResponse, IsCorrectActionRequest } from '@pages/api/isCorrectAction'
-import { getPlayers } from '@lib/preflop-trainer/controller'
+import { getPlayers, executeTurn } from '@lib/preflop-trainer/controller'
 
 const PLAYER_COUNT = 9
 
 export default function PreflopTrainer() {
-    const [holeCards, setHoleCards] = useState(getPlayers(PLAYER_COUNT))
+    const [players, setPlayers] = useState(getPlayers(PLAYER_COUNT))
     const [currentResult, setCurrentResult] = useState('')
+    const [turn, setTurn] = useState(0)
 
-    const hero = holeCards[0]
+    const updatedPlayers = executeTurn(turn, players)
+    const hero = players[0]
 
     const optionsBarProps: OptionsBarProps = {
-        position: holeCards[0].position,
+        position: hero.position,
         mode: 'RFI'
     }
 
     const tableProps: TableProps = {
-        holeCards: getPlayers(PLAYER_COUNT),
+        holeCards: updatedPlayers,
         result: currentResult,
-        openVillanCards: false
+        openVillanCards: true
     }
 
     const actionBarProps: ActionBarProps = {
@@ -41,7 +43,7 @@ export default function PreflopTrainer() {
             'RFI'
         ).then((data: IsCorrectActionResponse) => {
             setCurrentResult(data.correct ? 'Correct!' : 'Wrong')
-            setHoleCards(getPlayers(PLAYER_COUNT))
+            setPlayers(getPlayers(PLAYER_COUNT))
         })
     }
 

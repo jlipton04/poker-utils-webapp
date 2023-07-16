@@ -57,9 +57,24 @@ export function getPlayers(
         players.push({
             holeCards,
             position: POSITIONS_9[(i + positionOffset) % POSITIONS_9.length],
-            quality: getHoldemCardQuality(holeCards)
+            quality: getHoldemCardQuality(holeCards),
+            inHand: true
         })
     }
 
     return players
 }
+
+export function executeTurn(turn: number, players: Player[]): Player[] {
+    if (turn === 0) {
+        for (let i = players.length-1; i >= 1; i--) {
+            if (players[i].position === 'BB') {
+                break
+            }
+
+            players[i].inHand = false
+        }
+    }
+
+    return players
+} 

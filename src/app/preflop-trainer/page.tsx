@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import Table, { TableProps } from '@/app/preflop-trainer/table'
 import ActionBar, { ActionBarProps } from '@/app/preflop-trainer/actionBar'
 import OptionsBar, { OptionsBarProps } from '@/app/preflop-trainer/optionsBar'
@@ -11,12 +11,9 @@ const PLAYER_COUNT = 9
 
 export default function PreflopTrainer() {
     const [holeCards, setHoleCards] = useState(getPlayers(PLAYER_COUNT))
-    const [hero, setHero] = useState(holeCards[0])
     const [currentResult, setCurrentResult] = useState('')
 
-    useEffect(() => {
-        setHero(holeCards[0])
-    }, [holeCards])
+    const hero = holeCards[0]
 
     const optionsBarProps: OptionsBarProps = {
         position: holeCards[0].position,

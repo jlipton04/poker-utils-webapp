@@ -15,7 +15,7 @@ export function getCardString({
     return pip+suit;
 }
 
-function getHoldemCardQuality(cards: Card[]): string {
+export function getHoldemCardQuality(cards: Card[]): string {
     const cardOne = cards[0]
     const cardTwo = cards[1]
 

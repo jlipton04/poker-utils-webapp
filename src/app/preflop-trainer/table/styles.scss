@@ -49,40 +49,83 @@
     width: 15vw;
     transform: translate(-3vw, 10vw);
     z-index: 98;
+
+    .bettingLine {
+        transform: translate(5vw, -6vh);
+    }
 }
 
 .handed-9 {
     margin: 0 auto;
 
+    .bettingLine {
+        position: absolute;
+    }
+
     .seat:nth-child(2) {
         transform: translate(-20vw, 20vh);
+
+        .bettingLine {
+            transform: translate(0vw, -8vh);
+        }
     }
-    
-    .seat:nth-child(3) { /* Left */
+
+    .seat:nth-child(3) {
+        /* Left */
         transform: translate(-37vw, 10vh);
+
+        .bettingLine {
+            transform: translate(9vw, -4vh);
+        }
     }
-    
+
     .seat:nth-child(4) {
         transform: translate(-30vw, -12vh);
+
+        .bettingLine {
+            transform: translate(8vw, 8vh);
+        }
     }
-    
-    .seat:nth-child(5) { /* Top */
+
+    .seat:nth-child(5) {
+        /* Top */
         transform: translate(-10vw, -15vh);
+
+        .bettingLine {
+            transform: translate(0vw, 10vh);
+        }
     }
 
     .seat:nth-child(6) {
         transform: translate(10vw, -15vh);
+
+        .bettingLine {
+            transform: translate(0vw, 10vh);
+        }
     }
-    
+
     .seat:nth-child(7) {
         transform: translate(30vw, -12vh);
+
+        .bettingLine {
+            transform: translate(-5vw, 10vh);
+        }
     }
-    
-    .seat:nth-child(8) { /* Right */
+
+    .seat:nth-child(8) {
+        /* Right */
         transform: translate(37vw, 10vh);
+
+        .bettingLine {
+            transform: translate(-10vw, -2vh);
+        }
     }
-    
+
     .seat:nth-child(9) {
         transform: translate(20vw, 20vh);
+
+        .bettingLine {
+            transform: translate(0vw, -8vh);
+        }
     }
 }

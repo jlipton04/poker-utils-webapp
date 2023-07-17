@@ -20,29 +20,48 @@ export default function RootLayout({
       <body className={inter.className}>
         <div className='container-fluid'>
           <header>
-            <nav>
-              <ul>
-                <li><strong>{`Jacob's Poker Utils Web App`}</strong></li>
-              </ul>
-              <ul>
-                <li>
-                  <Link href='/home-game-calculator'>Home Game Calculator</Link>
-                </li>
-              </ul>
-            </nav>
+            <NavBar />
           </header>
           <main>
             {children}
             <Analytics />
           </main>
           <footer>
-            <small>
-              Built by <a href='https://www.linkedin.com/in/jacob-lipton/' target='_blank'>Jacob Lipton</a>
-              {` • `}
-              <a href="https://github.com/jlipton04/preflop-webapp" target='_blank'>Source code</a></small>
+            <InfoBar />
           </footer>
         </div>
       </body>
     </html>
+  )
+}
+
+function NavBar() {
+  return (
+    <nav>
+      <ul>
+        <li><Link href='/'>Home</Link></li>
+      </ul>
+      <ul>
+        <li><Link href='/preflop-trainer'>Preflop Trainer</Link></li>
+        <li>
+          <details role='list' dir='rtl'>
+            <summary aria-haspopup='listbox' role='link'>Utilities</summary>
+            <ul role='listbox'>
+              <li><Link href='/home-game-calculator'>Home Game Calculator</Link></li>
+            </ul>
+          </details>
+        </li>
+      </ul>
+    </nav>
+  )
+}
+
+function InfoBar() {
+  return (
+    <small>
+      Built by <a href='https://www.linkedin.com/in/jacob-lipton/' target='_blank'>Jacob Lipton</a>
+      {` • `}
+      <a href='https://github.com/jlipton04/preflop-webapp' target='_blank'>Source code</a>
+    </small>
   )
 }

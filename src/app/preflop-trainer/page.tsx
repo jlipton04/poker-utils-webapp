@@ -25,7 +25,7 @@ export default function PreflopTrainer() {
     const tableProps: TableProps = {
         holeCards: updatedPlayers,
         result: currentResult,
-        openVillanCards: true
+        openVillanCards: false
     }
 
     const actionBarProps: ActionBarProps = {

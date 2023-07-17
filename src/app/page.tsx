@@ -1,10 +1,11 @@
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
+import remarkGfm from 'remark-gfm'
 import fs from 'fs'
 
 export default function Home() {
   return (
     <article>
-      <ReactMarkdown>{getReadme()}</ReactMarkdown>
+      <ReactMarkdown remarkPlugins={[remarkGfm]} >{getReadme()}</ReactMarkdown>
     </article>
   )
 }

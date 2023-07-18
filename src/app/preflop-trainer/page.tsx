@@ -42,7 +42,8 @@ export default function PreflopTrainer() {
             hero.position,
             'RFI'
         ).then((data: IsCorrectActionResponse) => {
-            setCurrentResult(data.correct ? 'Correct!' : 'Wrong')
+            setCurrentResult(data.correct ? 'Correct!'
+                : `Incorrect. You should not ${action.toLowerCase()} ${hero.quality} from ${hero.position}.`)
             setPlayers(getPlayers(PLAYER_COUNT))
         })
     }

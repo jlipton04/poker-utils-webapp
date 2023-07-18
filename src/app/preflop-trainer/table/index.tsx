@@ -40,13 +40,11 @@ export default function Table({
 }
 
 function displayVillanCards(position: string): JSX.Element {
-  const isButton = position === 'BTN'
-
   return (
     <div className={`${seatClassnames}`}>
       <img className='holeCards' src="/cards/card_back.png" alt="villan hole cards" />
       <img className='holeCards' src="/cards/card_back.png" alt="villan hole cards" />
-      {isButton && getDealerButton()}
+      <SeatButton position={position} />
     </div>
   )
 }
@@ -56,8 +54,6 @@ function displayOpenedCards(
   position: string,
   isHero: boolean = false,
 ) {
-  const isButton = position === 'BTN'
-
   return (
     <div className={`${isHero ? 'hero' : ''} ${seatClassnames}`}>
       {cards.map((card, index) => {
@@ -66,15 +62,28 @@ function displayOpenedCards(
         return isHero ? <img className={`card${index}`} src={`/cards/${cardName}.png`} key={cardName} alt={cardName} />
           : <img className='holeCards' src={`/cards/${cardName}.png`} key={cardName} alt={cardName} />
       })}
-      {isButton && getDealerButton()}
+      <SeatButton position={position} />
     </div>
   )
 }
 
-function getDealerButton() {
+function SeatButton({position}: { position: string }) {
+  const buttonSrc = (position => {
+    switch (position) {
+      case 'BTN': return '/dealerButton.png'
+      case 'SB': return '/smallBlindButton.png'
+      case 'BB': return '/bigBlindButton.png'
+      default: return null
+    }
+  })(position)
+
+  if (buttonSrc === null) {
+    return
+  }
+  
   return <Image
     className='bettingLine'
-    src='/dealerButton.png'
+    src={buttonSrc!}
     alt='Dealer Button'
     width={50}
     height={50}

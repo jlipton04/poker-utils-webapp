@@ -39,8 +39,12 @@
     border-radius: 50%;
 }
 
+.card0 {
+    transform: translateX(2vw) rotate(-6deg);
+}
+
 .card1 {
-    transform: translateX(-5vw) rotate(15deg);
+    transform: translateX(-2vw) rotate(6deg);
 }
 
 .hero {

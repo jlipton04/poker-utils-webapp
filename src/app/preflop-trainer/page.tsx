@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Table, { Deck, TableProps } from '@/app/preflop-trainer/table'
 import ActionBar, { ActionBarProps } from '@/app/preflop-trainer/actionBar'
 import OptionsBar, { OptionsBarProps } from '@/app/preflop-trainer/optionsBar'
@@ -35,6 +35,30 @@ export default function PreflopTrainer() {
         fold: true,
         onAction
     }
+
+    useEffect(() => {
+        const handleKeyDown = (event: KeyboardEvent) => {
+            if (event.key.toLowerCase() === 'a') {
+                onAction('CALL')
+            }
+
+            if (event.key.toLowerCase() === 'd') {
+                onAction('FOLD')
+            }
+
+            if (event.key.toLowerCase() === 's') {
+                onAction('RAISE')
+            }
+        };
+
+        // Attach the event listener to the document or a specific element
+        document.addEventListener('keydown', handleKeyDown);
+
+        // Clean up the event listener when the component unmounts
+        return () => {
+            document.removeEventListener('keydown', handleKeyDown);
+        };
+    }, [players]);
 
     async function onAction(action: string) {
         isCorrectAction(

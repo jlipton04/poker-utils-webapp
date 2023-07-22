@@ -7,9 +7,9 @@ export default function ActionBar(
 ) {
     return (
         <div className="actionBar">
-            {props.call && <button className="call" onClick={() => props.onAction('CALL')}>Call</button>}
-            {props.raise && <button className="raise" onClick={() => props.onAction('RAISE')}>Raise</button>}
-            {props.fold && <button className="fold" onClick={() => props.onAction('FOLD')}>Fold</button>}
+            {props.call && <button className="call" data-tooltip='[A]' onClick={() => props.onAction('CALL')}>Call</button>}
+            {props.raise && <button className="raise" data-tooltip='[S]' onClick={() => props.onAction('RAISE')}>Raise</button>}
+            {props.fold && <button className="fold" data-tooltip='[D]' onClick={() => props.onAction('FOLD')}>Fold</button>}
         </div>
     )
 }

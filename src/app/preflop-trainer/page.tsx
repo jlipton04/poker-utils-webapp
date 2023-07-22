@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import Table, { TableProps } from '@/app/preflop-trainer/table'
+import Table, { Deck, TableProps } from '@/app/preflop-trainer/table'
 import ActionBar, { ActionBarProps } from '@/app/preflop-trainer/actionBar'
 import OptionsBar, { OptionsBarProps } from '@/app/preflop-trainer/optionsBar'
 import { IsCorrectActionResponse, IsCorrectActionRequest } from '@pages/api/isCorrectAction'
@@ -25,7 +25,8 @@ export default function PreflopTrainer() {
     const tableProps: TableProps = {
         holeCards: updatedPlayers,
         result: currentResult,
-        openVillanCards: false
+        openVillanCards: false,
+        deck: Deck.FOUR_COLOR
     }
 
     const actionBarProps: ActionBarProps = {

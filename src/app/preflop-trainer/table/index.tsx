@@ -1,15 +1,19 @@
-'use client'
-
 import { Card, getCardString } from '@lib/types/card'
 import './styles.scss'
 import classnames from 'classnames'
 import { Player } from '@lib/types/player'
 import Image from 'next/image'
 
+export enum Deck {
+  STANDARD = 'STANDARD',
+  FOUR_COLOR = 'FOUR_COLOR'
+}
+
 export type TableProps = {
   holeCards: Player[],
   openVillanCards: boolean,
-  result: string
+  result: string,
+  deck: Deck
 }
 
 const seatClassnames = classnames([
@@ -19,20 +23,21 @@ const seatClassnames = classnames([
 export default function Table({
   holeCards,
   openVillanCards,
-  result
+  result,
+  deck
 }: TableProps) {
   return (
     <div className="container-fluid">
       <div className='resultMessage'>{result}</div>
       <div className='table'></div>
       <div className={`handed-${holeCards.length}`}>
-        {displayOpenedCards(holeCards[0].holeCards, holeCards[0].position, true)}
+        {displayOpenedCards(holeCards[0].holeCards, holeCards[0].position, deck, true)}
         {holeCards.filter((_, index) => index !== 0).map(({ holeCards, inHand, position }) => {
           if (!inHand) {
             return
           }
 
-          return openVillanCards ? displayOpenedCards(holeCards, position) : displayVillanCards(position)
+          return openVillanCards ? displayOpenedCards(holeCards, position, deck) : displayVillanCards(position)
         })}
       </div>
     </div>
@@ -52,6 +57,7 @@ function displayVillanCards(position: string): JSX.Element {
 function displayOpenedCards(
   cards: Card[],
   position: string,
+  deck: Deck,
   isHero: boolean = false,
 ) {
   return (
@@ -59,15 +65,26 @@ function displayOpenedCards(
       {cards.map((card, index) => {
         const cardName = getCardString(card)
 
-        return isHero ? <img className={`card${index}`} src={`/cards/${cardName}.png`} key={cardName} alt={cardName} />
-          : <img className='holeCards' src={`/cards/${cardName}.png`} key={cardName} alt={cardName} />
+        return isHero ? <img className={`card${index}`} src={getCardSrc(cardName, deck)} key={cardName} alt={cardName} />
+          : <img className='holeCards' src={getCardSrc(cardName, deck)} key={cardName} alt={cardName} />
       })}
       <SeatButton position={position} />
     </div>
   )
 }
 
-function SeatButton({position}: { position: string }) {
+function getCardSrc(cardName: string, deck: Deck) {
+  switch (deck) {
+    case Deck.STANDARD:
+      return `/cards/${cardName}.png`
+    case Deck.FOUR_COLOR:
+      return `/alt_cards/${cardName}.svg`
+    default:
+      return undefined
+  }
+}
+
+function SeatButton({ position }: { position: string }) {
   const buttonSrc = (position => {
     switch (position) {
       case 'BTN': return '/dealerButton.png'
@@ -80,7 +97,7 @@ function SeatButton({position}: { position: string }) {
   if (buttonSrc === null) {
     return
   }
-  
+
   return <Image
     className='bettingLine'
     src={buttonSrc!}
